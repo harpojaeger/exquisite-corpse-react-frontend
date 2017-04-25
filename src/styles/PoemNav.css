@@ -1,0 +1,5 @@
+li.nav {
+  list-style-type: none;
+  display: inline;
+  margin-right: .5em;
+}

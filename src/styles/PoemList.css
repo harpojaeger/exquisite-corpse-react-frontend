@@ -1,0 +1,11 @@
+li.poem {
+  margin-bottom: 1em;
+}
+
+div.meta {
+  margin-bottom: .5em;
+}
+
+p.line {
+  margin: 0;
+}
