@@ -1,6 +1,8 @@
 var React = require('react')
 var PropTypes = require('prop-types')
 var dateFormat = require('dateformat')
+const Entities = require('html-entities').AllHtmlEntities
+const entities = new Entities()
 import '../styles/PoemList.css'
 
 function Timestamp(props) {
@@ -28,7 +30,7 @@ function Poem(props) {
         {props.starttime && ')'}
       </div>
       {props.lines.map( (line, index) =>
-        <p className='line' key={index}>{line}</p>
+        <p className='line' key={index}>{entities.decode(line)}</p>
       )}
     </li>
   )
