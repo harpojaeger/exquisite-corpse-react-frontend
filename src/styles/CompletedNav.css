@@ -1,0 +1,11 @@
+li.nav {
+  list-style-type: none;
+  display: inline;
+  margin-right: .5em;
+}
+
+ul.nav {
+  display: flex;
+ flex-wrap: wrap;
+ justify-content: spacing-around;
+}
