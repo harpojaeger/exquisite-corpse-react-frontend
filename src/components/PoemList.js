@@ -1,11 +1,12 @@
 var React = require('react')
 var PropTypes = require('prop-types')
+var dateFormat = require('dateformat')
 import '../styles/PoemList.css'
 
 function Timestamp(props) {
   return(
     <span className='timestamp'>
-      {props.children}
+      {dateFormat(new Date(props.children*1000),"mmmm d, yyyy")}
     </span>
   )
 }
@@ -17,10 +18,13 @@ function Poem(props) {
         <a id={props.id} href='#top' className='poem-title'>
           Poem #{props.id}
         </a>
-        {props.starttime && ' ('}
-        <Timestamp>{props.starttime}</Timestamp>
-        {props.endtime && ' – '}
-        <Timestamp>{props.endtime}</Timestamp>
+
+        {props.starttime &&
+          <span> (<Timestamp>{props.starttime}</Timestamp></span>
+        }
+        {props.endtime &&
+          <span> – <Timestamp>{props.endtime}</Timestamp></span>
+        }
         {props.starttime && ')'}
       </div>
       {props.lines.map( (line, index) =>

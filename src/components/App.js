@@ -22,15 +22,15 @@ class App extends React.Component {
     api.completed()
       .then(function(poems) {
         console.log(poems)
-        poems.sort( (a,b) => a.id - b.id )
+        poems.sort( (a,b) => b.id - a.id )
         this.setState({
           poems: poems
         })
-      })
+      }.bind(this))
   }
   render() {
     // Generate a list of ids for the nav block
-    var everyNth = 5
+    var everyNth = 25
     var navIds = []
     this.state.poems.forEach( (poem) =>
       ( poem.id % everyNth === 0 || poem.id === 1 )
