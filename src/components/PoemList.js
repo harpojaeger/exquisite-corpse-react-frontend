@@ -12,16 +12,16 @@ function Timestamp(props) {
 
 function Poem(props) {
   return (
-    <li key={props.poemId} className='poem'>
+    <li key={props.id} className='poem'>
       <div className='meta'>
-        <a id={props.poemId} href='#top' className='poem-title'>
-          Poem #{props.poemId}
+        <a id={props.id} href='#top' className='poem-title'>
+          Poem #{props.id}
         </a>
-        {props.startTime && ' ('}
-        <Timestamp>{props.startTime}</Timestamp>
-        {props.endTime && ' – '}
-        <Timestamp>{props.endTime}</Timestamp>
-        {props.startTime && ')'}
+        {props.starttime && ' ('}
+        <Timestamp>{props.starttime}</Timestamp>
+        {props.endtime && ' – '}
+        <Timestamp>{props.endtime}</Timestamp>
+        {props.starttime && ')'}
       </div>
       {props.lines.map( (line, index) =>
         <p className='line' key={index}>{line}</p>
@@ -30,22 +30,22 @@ function Poem(props) {
   )
 }
 Poem.propTypes = {
-  poemId: PropTypes.number.isRequired,
-  startTime: PropTypes.string,
-  endTime: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  starttime: PropTypes.string,
+  endtime: PropTypes.string,
   lines: PropTypes.array.isRequired,
 }
 
 Poem.defaultProps = {
-  startTime: '',
-  endTime: '',
+  starttime: '',
+  endtime: '',
 }
 
 function PoemList(props) {
   return(
     <ul className='no-bullets no-padding'>
       {props.poems.map( (poem) =>
-        <Poem key={poem.poemId} poemId={poem.poemId} startTime={poem.startTime} endTime={poem.endTime} lines={poem.lines} />
+        <Poem key={poem.id} id={poem.id} starttime={poem.starttime} endtime={poem.endtime} lines={poem.lines} />
       )}
     </ul>
   )
