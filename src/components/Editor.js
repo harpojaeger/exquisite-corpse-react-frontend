@@ -59,13 +59,22 @@ class Editor extends React.Component {
             (<a href='#' onClick={this.refreshPrompt}>get a different prompt</a>)
             <div style={{'fontWeight': 'bold'}}>{entities.decode(this.state.prompt)}</div>
           </div>
-          <input type='text' className='editor' value={this.state.nextline} onChange={this.handleNextLineChange}/>
+          <form>
+            <input type='text' className='editor' value={this.state.nextline} onChange={this.handleNextLineChange}/>
+            <button type='submit' name='action' value='add'>Add</button>
+            <button type='submit' name='action' value='end'>End</button>
+          </form>
+
         </div>
         <div>
           <div>
             {this.state.poemid ? 'or s' : 'S'}tart a new poem:
           </div>
-          <input type='text' className='editor' value={this.state.newline} onChange={this.handleNewPoemChange} />
+          <form>
+            <input type='text' className='editor' value={this.state.newline} onChange={this.handleNewPoemChange} />
+            <button type='submit' name='action' value='start'>Start</button>
+          </form>
+
         </div>
       </div>
     )
