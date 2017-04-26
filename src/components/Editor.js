@@ -25,6 +25,7 @@ class Editor extends React.Component {
     this.handleNextLineChange = this.handleNextLineChange.bind(this)
     this.handleNewPoemChange = this.handleNewPoemChange.bind(this)
     this.refreshPrompt = this.refreshPrompt.bind(this)
+    this.handleNextLineSubmit = this.handleNextLineSubmit.bind(this)
   }
   componentDidMount() {
     this.refreshPrompt()
@@ -49,6 +50,12 @@ class Editor extends React.Component {
       })
     }.bind(this))
   }
+
+  handleNextLineSubmit(e) {
+    e.preventDefault()
+    var action = e.target.value
+  }
+
   render() {
     return(
       <div>
@@ -61,8 +68,8 @@ class Editor extends React.Component {
           </div>
           <form>
             <input type='text' className='editor' value={this.state.nextline} onChange={this.handleNextLineChange}/>
-            <button type='submit' name='action' value='add'>Add</button>
-            <button type='submit' name='action' value='end'>End</button>
+            <button type='submit' name='action' onClick={this.handleNextLineSubmit} value='add'>Add</button>
+            <button type='submit' name='action' onClick={this.handleNextLineSubmit} value='end'>End</button>
           </form>
 
         </div>
