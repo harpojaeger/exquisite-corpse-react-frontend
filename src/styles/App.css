@@ -5,3 +5,7 @@ ul.no-bullets{
 ul.no-padding {
 padding-left: 0;
 }
+
+.hidden {
+  display: none;
+}

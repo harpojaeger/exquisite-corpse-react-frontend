@@ -2,12 +2,16 @@ var React = require('react')
 var PropTypes = require('prop-types')
 import '../styles/App.css'
 var CompletedPoems = require('./CompletedPoems')
+var Editor = require('./Editor')
 
 
 class App extends React.Component {
   render() {
     return (
-      <CompletedPoems />
+      <div>
+        <Editor />
+        <CompletedPoems />
+      </div>
     )
   }
 }

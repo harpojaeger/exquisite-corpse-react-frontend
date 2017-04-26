@@ -2,6 +2,7 @@ var React = require('react')
 var CompletedNav = require('./CompletedNav')
 var CompletedList = require('./CompletedList')
 var api = require('../../utils/api')
+var Loader = require('./Loader')
 
 class CompletedPoems extends React.Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class CompletedPoems extends React.Component {
   updateCompletedPoems() {
     api.completed()
       .then(function(poems) {
-        console.log(poems)
         poems.sort( (a,b) => b.id - a.id )
         this.setState({
           poems: poems
@@ -36,7 +36,11 @@ class CompletedPoems extends React.Component {
     )
     return (
       <div>
-        <CompletedNav ids={navIds} />
+        <Loader visible={ this.state.poems.length === 0 }>Loading finished poems...</Loader>
+        <div className={this.state.poems.length ? '' : 'hidden'}>
+          <CompletedNav ids={navIds} />
+        </div>
+
         <CompletedList poems={this.state.poems} />
       </div>
     )
