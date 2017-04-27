@@ -8,7 +8,7 @@ import '../styles/CompletedList.css'
 function Timestamp(props) {
   return(
     <span className='timestamp'>
-      {dateFormat(new Date(props.children*1000),"mmmm d, yyyy")}
+      {dateFormat(new Date(props.children*1),"mmmm d, yyyy")}
     </span>
   )
 }
