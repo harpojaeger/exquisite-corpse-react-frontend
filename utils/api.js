@@ -29,8 +29,24 @@ function nextline(id, line, completed) {
   })
 }
 
+function newpoem(line) {
+  return axios.post('http://localhost:5000/poems',
+    {
+      line: line
+    }
+  )
+  .then(function(res) {
+    return res
+  })
+  .catch(function (e) {
+    console.error(e)
+    return e
+  })
+}
+
 module.exports = {
   random: random,
   completed: completed,
   nextline: nextline,
+  newpoem: newpoem,
 }

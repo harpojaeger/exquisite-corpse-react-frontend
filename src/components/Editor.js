@@ -69,6 +69,10 @@ class Editor extends React.Component {
     e.preventDefault()
     var action = e.target
     console.log(action)
+    api.newpoem(this.state.newline)
+    .then(function(res) {
+      console.log('promise returned', res)
+    })
   }
   render() {
     return(
