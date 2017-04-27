@@ -62,8 +62,11 @@ class Editor extends React.Component {
       e.target.value === 'end' && (completed = true)
       api.nextline(this.state.id, this.state.nextline, completed)
       .then(function(res) {
-        console.log('promise returned', res)
-      })
+        console.log(res)
+        this.refreshPrompt()
+        // This line doesn't work yet – need to switch things around so <App /> passes a refreshing function to both <Editor /> and <CompletedPoems />.
+        if(completed) this.refreshCompletedPoems()
+      }.bind(this))
     }
   }
 
@@ -73,8 +76,11 @@ class Editor extends React.Component {
     console.log(action)
     api.newpoem(this.state.newline)
     .then(function(res) {
-      console.log('promise returned', res)
-    })
+      console.log(res)
+      this.setState({
+        newline: ''
+      })
+    }.bind(this))
   }
   render() {
     return(
