@@ -26,6 +26,7 @@ class Editor extends React.Component {
     this.handleNewPoemChange = this.handleNewPoemChange.bind(this)
     this.refreshPrompt = this.refreshPrompt.bind(this)
     this.handleNextLineSubmit = this.handleNextLineSubmit.bind(this)
+    this.handleNewPoemSubmit = this.handleNewPoemSubmit.bind(this)
   }
   componentDidMount() {
     this.refreshPrompt()
@@ -54,8 +55,14 @@ class Editor extends React.Component {
   handleNextLineSubmit(e) {
     e.preventDefault()
     var action = e.target.value
+    // Do the updating actions
   }
 
+  handleNewPoemSubmit(e) {
+    e.preventDefault()
+    var action = e.target
+    console.log(action)
+  }
   render() {
     return(
       <div>
@@ -77,7 +84,7 @@ class Editor extends React.Component {
           <div>
             {this.state.poemid ? 'or s' : 'S'}tart a new poem:
           </div>
-          <form>
+          <form action='#' onSubmit={this.handleNewPoemSubmit}>
             <input type='text' className='editor' value={this.state.newline} onChange={this.handleNewPoemChange} />
             <button type='submit' name='action' value='start'>Start</button>
           </form>
