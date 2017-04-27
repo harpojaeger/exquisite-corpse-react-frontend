@@ -55,9 +55,14 @@ class Editor extends React.Component {
 
   handleNextLineSubmit(e) {
     e.preventDefault()
-    var action = e.target.value
+    console.log(e.target.value,this.state.nextline,this.state.id)
+    var completed = false
     // Do the updating actions
-    console.log(action,this.state.nextline,this.state.id)
+    e.target.value === 'end' && (completed = true)
+    api.nextline(this.state.id, this.state.nextline, completed)
+    .then(function(res) {
+      console.log('promise returned', res)
+    })
   }
 
   handleNewPoemSubmit(e) {

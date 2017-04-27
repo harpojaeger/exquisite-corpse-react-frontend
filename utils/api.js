@@ -14,7 +14,23 @@ function random() {
     })
 }
 
+function nextline(id, line, completed) {
+  return axios.put('http://localhost:5000/poems/'+id,
+  {
+    line: line,
+    completed: completed,
+  })
+  .then(function(res) {
+    return res
+  })
+  .catch(function (e) {
+    console.error(e)
+    return e
+  })
+}
+
 module.exports = {
   random: random,
   completed: completed,
+  nextline: nextline,
 }
