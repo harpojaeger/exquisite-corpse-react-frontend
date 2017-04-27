@@ -18,6 +18,7 @@ class CompletedPoems extends React.Component {
   }
 
   updateCompletedPoems() {
+    // Need to move this function into <App /> and figure out how to pass it to <CompletedPoems /> so that <Editor /> has access to it too.
     api.completed()
       .then(function(poems) {
         this.setState({
