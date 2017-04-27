@@ -17,7 +17,7 @@ class Editor extends React.Component {
     this.state = {
       nextline: '',
       newline: '',
-      poemid: null,
+      id: null,
       prompt: '',
       numlines: null,
       promptloading: true,
@@ -44,10 +44,11 @@ class Editor extends React.Component {
     api.random()
     .then(function(poem) {
       this.setState({
-        poemid: poem.id,
+        id: poem.id,
         numlines: poem.lines.length,
         prompt: poem.lines[poem.lines.length-1],
         promptloading:false,
+        nextline: ''
       })
     }.bind(this))
   }
@@ -56,6 +57,7 @@ class Editor extends React.Component {
     e.preventDefault()
     var action = e.target.value
     // Do the updating actions
+    console.log(action,this.state.nextline,this.state.id)
   }
 
   handleNewPoemSubmit(e) {
@@ -66,7 +68,7 @@ class Editor extends React.Component {
   render() {
     return(
       <div>
-        <div className={this.state.poemid ? '' : 'hidden'}>
+        <div className={this.state.id ? '' : 'hidden'}>
           <div>
             Write the {ordinal(this.state.numlines + 1)} line of this poem:
             <Loader visible={this.state.promptloading}><img src={spinner} alt='loading...' /></Loader>
@@ -82,7 +84,7 @@ class Editor extends React.Component {
         </div>
         <div>
           <div>
-            {this.state.poemid ? 'or s' : 'S'}tart a new poem:
+            {this.state.id ? 'or s' : 'S'}tart a new poem:
           </div>
           <form action='#' onSubmit={this.handleNewPoemSubmit}>
             <input type='text' className='editor' value={this.state.newline} onChange={this.handleNewPoemChange} />
