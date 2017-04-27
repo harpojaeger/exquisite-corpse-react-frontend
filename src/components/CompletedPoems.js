@@ -20,7 +20,6 @@ class CompletedPoems extends React.Component {
   updateCompletedPoems() {
     api.completed()
       .then(function(poems) {
-        poems.sort( (a,b) => b.id - a.id )
         this.setState({
           poems: poems
         })
