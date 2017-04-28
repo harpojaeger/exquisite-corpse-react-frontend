@@ -4,7 +4,7 @@ var CompletedList = require('./CompletedList')
 var api = require('../../utils/api')
 var Loader = require('./Loader')
 
-class CompletedPoems extends React.Component {
+class PoemContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -47,4 +47,4 @@ class CompletedPoems extends React.Component {
   }
 }
 
-module.exports = CompletedPoems
+module.exports = PoemContainer

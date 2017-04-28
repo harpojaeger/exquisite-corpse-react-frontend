@@ -1,7 +1,7 @@
 var React = require('react')
 var PropTypes = require('prop-types')
 import '../styles/App.css'
-var CompletedPoems = require('./CompletedPoems')
+var PoemContainer = require('./PoemContainer')
 var Editor = require('./Editor')
 
 
@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <div>
         <Editor />
-        <CompletedPoems />
+        <PoemContainer />
       </div>
     )
   }
