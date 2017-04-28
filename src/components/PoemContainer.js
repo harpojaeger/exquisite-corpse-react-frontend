@@ -1,5 +1,5 @@
 var React = require('react')
-var CompletedNav = require('./CompletedNav')
+var PoemNav = require('./PoemNav')
 var CompletedList = require('./CompletedList')
 var api = require('../../utils/api')
 var Loader = require('./Loader')
@@ -38,7 +38,7 @@ class PoemContainer extends React.Component {
       <div>
         <Loader visible={ this.state.poems.length === 0 }>Loading finished poems...</Loader>
         <div className={this.state.poems.length ? '' : 'hidden'}>
-          <CompletedNav ids={navIds} />
+          <PoemNav ids={navIds} />
         </div>
 
         <CompletedList poems={this.state.poems} />
