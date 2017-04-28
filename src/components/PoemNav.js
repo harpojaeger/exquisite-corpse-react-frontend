@@ -1,6 +1,6 @@
 var React = require('react')
 var PropTypes = require('prop-types')
-import '../styles/CompletedNav.css'
+import '../styles/PoemNav.css'
 
 function PoemNav(props) {
   return (
