@@ -3,7 +3,7 @@ var PropTypes = require('prop-types')
 var dateFormat = require('dateformat')
 const Entities = require('html-entities').AllHtmlEntities
 const entities = new Entities()
-import '../styles/CompletedList.css'
+import '../styles/PoemList.css'
 
 function Timestamp(props) {
   return(
