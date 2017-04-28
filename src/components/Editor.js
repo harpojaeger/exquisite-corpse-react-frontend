@@ -65,7 +65,7 @@ class Editor extends React.Component {
         console.log(res)
         this.refreshPrompt()
         // This line doesn't work yet – need to switch things around so <App /> passes a refreshing function to both <Editor /> and <CompletedPoems />.
-        if(completed) this.refreshCompletedPoems()
+        if(completed) this.props.refreshCompletedPoems()
       }.bind(this))
     }
   }

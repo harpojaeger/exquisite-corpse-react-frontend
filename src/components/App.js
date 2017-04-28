@@ -13,14 +13,14 @@ class App extends React.Component {
       poems: []
     }
 
-    this.updateCompletedPoems = this.updateCompletedPoems.bind(this)
+    this.refreshCompletedPoems = this.refreshCompletedPoems.bind(this)
   }
 
   componentDidMount () {
-    this.updateCompletedPoems()
+    this.refreshCompletedPoems()
   }
 
-  updateCompletedPoems() {
+  refreshCompletedPoems() {
     // Need to move this function into <App /> and figure out how to pass it to <CompletedPoems /> so that <Editor /> has access to it too.
     api.completed()
       .then(function(poems) {
@@ -33,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Editor />
+        <Editor refreshCompletedPoems={this.refreshCompletedPoems}/>
         <PoemContainer poems={this.state.poems}/>
       </div>
     )
