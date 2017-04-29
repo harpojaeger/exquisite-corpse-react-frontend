@@ -32,7 +32,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='app'>
         <Editor refreshCompletedPoems={this.refreshCompletedPoems}/>
         <PoemContainer poems={this.state.poems}/>
       </div>

@@ -13,3 +13,9 @@ padding-left: 0;
 .hidden {
   display: none;
 }
+
+div.app {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px 0;
+}
