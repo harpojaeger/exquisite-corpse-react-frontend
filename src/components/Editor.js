@@ -73,15 +73,17 @@ class Editor extends React.Component {
 
   handleNewPoemSubmit(e) {
     e.preventDefault()
-    var action = e.target
-    console.log(action)
-    api.newpoem(this.state.newline)
-    .then(function(res) {
-      console.log(res)
-      this.setState({
-        newline: ''
-      })
-    }.bind(this))
+    if(this.state.newline) {
+      var action = e.target
+      console.log(action)
+      api.newpoem(this.state.newline)
+      .then(function(res) {
+        console.log(res)
+        this.setState({
+          newline: ''
+        })
+      }.bind(this))
+    }
   }
   render() {
     return(
@@ -107,6 +109,7 @@ class Editor extends React.Component {
               name='action'
               onClick={this.handleNextLineSubmit}
               value='end'
+              // Only display the end button if the poem is already at least 10 lines long
               className={this.state.numlines < 11 && 'hidden'}>
               End
             </button>
