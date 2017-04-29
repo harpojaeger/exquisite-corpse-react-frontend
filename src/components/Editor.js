@@ -4,6 +4,7 @@ const Entities = require('html-entities').AllHtmlEntities
 const entities = new Entities()
 var Loader = require('./Loader')
 var spinner = require('../../static/spinner.gif')
+require('../styles/Editor.css')
 
 function ordinal(n) {
     var s=["th","st","nd","rd"],
@@ -92,7 +93,6 @@ class Editor extends React.Component {
           <div>
             Write the {ordinal(this.state.numlines + 1)} line of this poem:
             <Loader visible={this.state.promptloading}><img src={spinner} alt='loading...' /></Loader>
-            (<a href='#' onClick={this.refreshPrompt}>get a different prompt</a>)
             <div style={{'fontWeight': 'bold'}}>{entities.decode(this.state.prompt)}</div>
           </div>
           <form>
@@ -100,6 +100,7 @@ class Editor extends React.Component {
             <button
               type='submit'
               name='action'
+              className='button'
               onClick={this.handleNextLineSubmit}
               value='add'>
               Add
@@ -110,11 +111,11 @@ class Editor extends React.Component {
               onClick={this.handleNextLineSubmit}
               value='end'
               // Only display the end button if the poem is already at least 10 lines long
-              className={this.state.numlines < 11 && 'hidden'}>
+              className={'button ' + (this.state.numlines < 11 && 'hidden')}>
               End
             </button>
           </form>
-
+          (<a href='#' onClick={this.refreshPrompt}>get a different prompt</a>)
         </div>
         <div>
           <div>
@@ -122,7 +123,7 @@ class Editor extends React.Component {
           </div>
           <form action='#' onSubmit={this.handleNewPoemSubmit}>
             <input type='text' className='editor' value={this.state.newline} onChange={this.handleNewPoemChange} />
-            <button type='submit' name='action' value='start'>Start</button>
+            <button type='submit' className='button' name='action' value='start'>Start</button>
           </form>
 
         </div>

@@ -1,0 +1,31 @@
+input {
+  border-radius: 3px;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.43);
+  font-size: 1em;
+
+  height: 1.5em;
+}
+
+.button {
+  color: #e6e6e6;
+  background: #0a0a0a;
+  border: none;
+  font-size: 1.5em;
+  height: 1.5em;
+  border-radius: 3px;
+  width: 75px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.button:hover:enabled {
+  backround: linear-gradient(#111,#0A0A0A);
+  color: #fff;
+  text-decoration: none;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
