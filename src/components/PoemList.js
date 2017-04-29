@@ -8,7 +8,7 @@ import '../styles/PoemList.css'
 function Timestamp(props) {
   return(
     <span className='timestamp'>
-      {dateFormat(new Date(props.children*1),"mmmm d, yyyy")}
+      {dateFormat(new Date(props.children*1),"mmm. d, yyyy")}
     </span>
   )
 }
