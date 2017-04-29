@@ -95,8 +95,21 @@ class Editor extends React.Component {
           </div>
           <form>
             <input type='text' className='editor' value={this.state.nextline} onChange={this.handleNextLineChange}/>
-            <button type='submit' name='action' onClick={this.handleNextLineSubmit} value='add'>Add</button>
-            <button type='submit' name='action' onClick={this.handleNextLineSubmit} value='end'>End</button>
+            <button
+              type='submit'
+              name='action'
+              onClick={this.handleNextLineSubmit}
+              value='add'>
+              Add
+            </button>
+            <button
+              type='submit'
+              name='action'
+              onClick={this.handleNextLineSubmit}
+              value='end'
+              className={this.state.numlines < 11 && 'hidden'}>
+              End
+            </button>
           </form>
 
         </div>
