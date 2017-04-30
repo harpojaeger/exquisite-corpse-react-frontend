@@ -5,6 +5,7 @@ const entities = new Entities()
 var Loader = require('./Loader')
 var spinner = require('../../static/spinner.gif')
 require('../styles/Editor.css')
+import { Button, FormControl } from 'react-bootstrap'
 
 function ordinal(n) {
     var s=["th","st","nd","rd"],
@@ -88,32 +89,41 @@ class Editor extends React.Component {
   }
   render() {
     return(
-      <div>
+      <div className='editor'>
         <div className={this.state.id ? '' : 'hidden'}>
           <div>
             Write the {ordinal(this.state.numlines + 1)} line of this poem:
-            <Loader visible={this.state.promptloading}><img src={spinner} alt='loading...' /></Loader>
-            <div style={{'fontWeight': 'bold'}}>{entities.decode(this.state.prompt)}</div>
+            <Loader visible={this.state.promptloading}>
+              <img src={spinner} alt='loading...' />
+            </Loader>
+            <div style={{'fontWeight': 'bold'}}>
+              {entities.decode(this.state.prompt)}
+            </div>
           </div>
           <form>
-            <input type='text' className='editor' value={this.state.nextline} onChange={this.handleNextLineChange}/>
-            <button
+            <FormControl
+              type='text'
+              className='editor'
+              value={this.state.nextline}
+              onChange={this.handleNextLineChange}
+            />
+            <Button
               type='submit'
               name='action'
-              className='button'
               onClick={this.handleNextLineSubmit}
               value='add'>
               Add
-            </button>
-            <button
+            </Button>
+            <Button
               type='submit'
               name='action'
               onClick={this.handleNextLineSubmit}
               value='end'
               // Only display the end button if the poem is already at least 10 lines long
-              className={'button ' + (this.state.numlines < 11 && 'hidden')}>
+              disabled={ this.state.numlines < 10 }
+              >
               End
-            </button>
+            </Button>
           </form>
           (<a href='#' onClick={this.refreshPrompt}>get a different prompt</a>)
         </div>
@@ -122,8 +132,18 @@ class Editor extends React.Component {
             {this.state.id ? 'or s' : 'S'}tart a new poem:
           </div>
           <form action='#' onSubmit={this.handleNewPoemSubmit}>
-            <input type='text' className='editor' value={this.state.newline} onChange={this.handleNewPoemChange} />
-            <button type='submit' className='button' name='action' value='start'>Start</button>
+            <FormControl
+              type='text'
+              className='editor'
+              value={this.state.newline}
+              onChange={this.handleNewPoemChange}
+            />
+            <Button
+              type='submit'
+              name='action'
+              value='start'>
+              Start
+            </Button>
           </form>
 
         </div>
