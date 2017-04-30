@@ -5,7 +5,7 @@ const entities = new Entities()
 var Loader = require('./Loader')
 var spinner = require('../../static/spinner.gif')
 require('../styles/Editor.css')
-import { Button, FormControl } from 'react-bootstrap'
+import { Button, ButtonGroup, FormControl } from 'react-bootstrap'
 
 function ordinal(n) {
     var s=["th","st","nd","rd"],
@@ -107,23 +107,25 @@ class Editor extends React.Component {
               value={this.state.nextline}
               onChange={this.handleNextLineChange}
             />
-            <Button
-              type='submit'
-              name='action'
-              onClick={this.handleNextLineSubmit}
-              value='add'>
-              Add
-            </Button>
-            <Button
-              type='submit'
-              name='action'
-              onClick={this.handleNextLineSubmit}
-              value='end'
-              // Only display the end button if the poem is already at least 10 lines long
-              disabled={ this.state.numlines < 10 }
-              >
-              End
-            </Button>
+            <ButtonGroup>
+              <Button
+                type='submit'
+                name='action'
+                onClick={this.handleNextLineSubmit}
+                value='add'>
+                Add
+              </Button>
+              <Button
+                type='submit'
+                name='action'
+                onClick={this.handleNextLineSubmit}
+                value='end'
+                // Only display the end button if the poem is already at least 10 lines long
+                disabled={ this.state.numlines < 10 }
+                >
+                End
+              </Button>
+            </ButtonGroup>
           </form>
           (<a href='#' onClick={this.refreshPrompt}>get a different prompt</a>)
         </div>
