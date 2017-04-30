@@ -122,8 +122,7 @@ class Editor extends React.Component {
                 onClick={this.handleNextLineSubmit}
                 value='end'
                 // Only display the end button if the poem is already at least 10 lines long
-                disabled={ this.state.promptloading || this.state.numlines < 10 }
-                >
+                disabled={this.state.promptloading || this.state.numlines < 10}>
                 End
               </Button>
             </ButtonGroup>
@@ -148,7 +147,6 @@ class Editor extends React.Component {
               Start
             </Button>
           </form>
-
         </div>
       </div>
     )
