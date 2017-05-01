@@ -3,44 +3,35 @@ var PoemNav = require('./PoemNav')
 var PoemList = require('./PoemList')
 var Loader = require('./Loader')
 var PropTypes = require('prop-types')
+import { Button } from 'react-bootstrap'
 
 class PoemContainer extends React.Component {
   constructor(props) {
     super(props)
-    var initialQuantity = 50
+    var perPage = 100
     this.state = {
-      quantity: initialQuantity,
+      quantity: perPage,
       from: 0,
-      to: initialQuantity,
+      to: perPage,
       poems: []
     }
-
-    this.pageNext = this.pageNext.bind(this)
-    this.pagePrevious = this.pagePrevious.bind(this)
+    this.loadMorePoems = this.loadMorePoems.bind(this)
   }
+
+  loadMorePoems(){
+    this.setState(function(prevState){
+      return {
+        to: prevState.to + prevState.quantity
+      }
+    })
+  }
+
   componentWillReceiveProps(newprops){
     this.setState({
       poems: newprops.poems
     })
   }
-  pageNext(){
-    this.setState(function(prevState){
-      console.log(prevState)
-      return {
-        from: prevState.from + prevState.quantity,
-        to: prevState.to + prevState.quantity,
-      }
-    })
-  }
-  pagePrevious(prevState){
-    this.setState(function(prevState){
-      console.log(prevState)
-      return {
-        from: prevState.from - prevState.quantity,
-        to: prevState.to - prevState.quantity,  
-      }
-    })
-  }
+
   render() {
     // Generate a list of ids for the nav block
     var everyNth = 25
@@ -56,8 +47,17 @@ class PoemContainer extends React.Component {
         {/* <div className={this.props.poems.length ? '' : 'hidden'}>
           <PoemNav ids={navIds} />
         </div> */}
-
         <PoemList poems={this.state.poems.slice(this.state.from,this.state.to)} />
+        <Button
+          type='submit'
+          name='action'
+          onClick={this.loadMorePoems}
+          value='add'
+          disabled={ this.state.to >= this.state.poems.length }
+          className={this.state.to >= this.state.poems.length && 'hidden'}
+          >
+          Load more poems
+        </Button>
       </div>
     )
   }
