@@ -1,9 +1,9 @@
 var React = require('react')
-var PoemNav = require('./PoemNav')
 var PoemList = require('./PoemList')
 var Loader = require('./Loader')
 var PropTypes = require('prop-types')
 import { Button } from 'react-bootstrap'
+import '../styles/PoemContainer.css'
 
 class PoemContainer extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class PoemContainer extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className='poem-container'>
         <h3>Completed poems</h3>
         <Loader visible={ this.props.poems.length === 0 }>Loading...</Loader>
         <PoemList poems={this.state.poems.slice(this.state.from,this.state.to)} />
@@ -45,7 +45,7 @@ class PoemContainer extends React.Component {
           onClick={this.loadMorePoems}
           value='add'
           disabled={ this.state.to >= this.state.poems.length }
-          className={this.state.to >= this.state.poems.length && 'hidden'}
+          className={ 'load-more ' + (this.state.to >= this.state.poems.length && 'hidden') }
           >
           Load more poems
         </Button>

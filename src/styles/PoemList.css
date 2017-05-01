@@ -9,3 +9,7 @@ div.meta {
 p.line {
   margin: 0;
 }
+
+ul.poem-list {
+  margin-bottom: 2em;
+}

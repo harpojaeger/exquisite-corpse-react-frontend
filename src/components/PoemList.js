@@ -49,7 +49,7 @@ Poem.defaultProps = {
 
 function PoemList(props) {
   return(
-    <ul className='no-bullets no-padding'>
+    <ul className='no-bullets no-padding poem-list'>
       {props.poems.map( (poem) =>
         <Poem key={poem.id} id={poem.id} starttime={poem.starttime} endtime={poem.endtime} lines={poem.lines} />
       )}
