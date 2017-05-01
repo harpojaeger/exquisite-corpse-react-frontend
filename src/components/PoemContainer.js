@@ -33,20 +33,11 @@ class PoemContainer extends React.Component {
   }
 
   render() {
-    // Generate a list of ids for the nav block
-    var everyNth = 25
-    var navIds = []
-    this.props.poems.forEach( (poem) =>
-      ( poem.id % everyNth === 0 || poem.id === 1 )
-      && navIds.unshift(poem.id)
-    )
+
     return (
       <div>
         <h3>Completed poems</h3>
         <Loader visible={ this.props.poems.length === 0 }>Loading...</Loader>
-        {/* <div className={this.props.poems.length ? '' : 'hidden'}>
-          <PoemNav ids={navIds} />
-        </div> */}
         <PoemList poems={this.state.poems.slice(this.state.from,this.state.to)} />
         <Button
           type='submit'
