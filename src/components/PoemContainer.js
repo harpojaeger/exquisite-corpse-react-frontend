@@ -13,7 +13,7 @@ class PoemContainer extends React.Component {
       quantity: perPage,
       from: 0,
       to: perPage,
-      poems: []
+      poems: [],
     }
     this.loadMorePoems = this.loadMorePoems.bind(this)
   }
@@ -21,19 +21,22 @@ class PoemContainer extends React.Component {
   loadMorePoems(){
     this.setState(function(prevState){
       return {
-        to: prevState.to + prevState.quantity
+        to: prevState.to + prevState.quantity,
       }
     })
   }
 
   componentWillReceiveProps(newprops){
     this.setState({
-      poems: newprops.poems
+      poems: newprops.poems,
     })
   }
 
   render() {
-
+    var numPoemsToLoad = this.state.quantity
+    if(this.state.to+this.state.quantity > this.state.poems.length) {
+      numPoemsToLoad = this.state.poems.length - this.state.to
+    }
     return (
       <div className='poem-container'>
         <h3>Completed poems</h3>
@@ -47,7 +50,8 @@ class PoemContainer extends React.Component {
           disabled={ this.state.to >= this.state.poems.length }
           className={ 'load-more ' + (this.state.to >= this.state.poems.length && 'hidden') }
           >
-          Load more poems
+          Load {numPoemsToLoad} more poem{ numPoemsToLoad > 1 && 's' }
+          {/* {this.state.nextids.first} - {this.state.nextids.last} */}
         </Button>
       </div>
     )
