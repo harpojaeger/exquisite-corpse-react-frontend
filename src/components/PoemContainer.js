@@ -13,10 +13,10 @@ function PoemContainer(props) {
   )
   return (
     <div>
-      <Loader visible={ props.poems.length === 0 }>Loading finished poems...</Loader>
       <h3>
         Completed poems
       </h3>
+      <Loader visible={ props.poems.length === 0 }>Loading...</Loader>
       <div className={props.poems.length ? '' : 'hidden'}>
         <PoemNav ids={navIds} />
       </div>
