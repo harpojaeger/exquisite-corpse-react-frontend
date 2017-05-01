@@ -33,7 +33,11 @@ class App extends React.Component {
   render() {
     return (
       <div className='app'>
+        <h1>Exquisite Corpse</h1>
         <Editor refreshCompletedPoems={this.refreshCompletedPoems}/>
+        <h4>What is this?</h4>
+        <p>Collective, anonymous Internet poetry, written one line at a time. No one sees the whole poem until it’s done.</p>
+        <p>Exquisite Corpse began as a Surrealist parlor game in the early 20th century. I created this Internet version in 2009.</p>
         <PoemContainer poems={this.state.poems}/>
       </div>
     )
