@@ -4,6 +4,7 @@ var dateFormat = require('dateformat')
 const Entities = require('html-entities').AllHtmlEntities
 const entities = new Entities()
 import '../styles/PoemList.css'
+import { Glyphicon } from 'react-bootstrap'
 
 function Timestamp(props) {
   return(
@@ -17,7 +18,8 @@ function Poem(props) {
   return (
     <li key={props.id} className='poem'>
       <div className='meta'>
-        <a id={props.id} href={'#'+props.id} className='poem-title hidden-link-glyph glyphicon glyphicon-link'>
+        <a id={props.id} href={'#'+props.id} className='poem-title hidden-link-glyph'>
+          <Glyphicon glyph='link' />
         </a>
         Poem #{props.id}
         {props.starttime &&
