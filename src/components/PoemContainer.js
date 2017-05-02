@@ -37,7 +37,7 @@ class PoemContainer extends React.Component {
       // var hash = window.location.href.split('#')[1]
       var targetPoem = document.getElementById(this.state.autoscroll)
       console.log(targetPoem)
-      targetPoem.scrollIntoView(false)
+      document.body.scrollTop = targetPoem.offsetTop
       this.setState({ autoscroll: false })
     }
   }
@@ -53,12 +53,10 @@ class PoemContainer extends React.Component {
       return el.id === id
     })
     console.log('poem',id,'has index',index)
-    if(index > this.state.to) {
-      this.setState({
-        to: index,
-        autoscroll: id,
-      })
-    }
+    this.setState({
+      to: Math.max(index, this.state.to),
+      autoscroll: id,
+    })
   }
 
   render() {
