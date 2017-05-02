@@ -4,6 +4,7 @@ import '../styles/App.css'
 var PoemContainer = require('./PoemContainer')
 var Editor = require('./Editor')
 var api = require('../../utils/api')
+import { Glyphicon, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 
 class App extends React.Component {
@@ -30,12 +31,19 @@ class App extends React.Component {
   }
 
   render() {
+    const longEnoughTooltip = (<Tooltip id='long_enough_explanation'>I didn't use to require a minimum poem length, but I've found it leads to higher quality poems and less trolling.</Tooltip>)
     return (
       <div className='app'>
         <h1>Exquisite Corpse</h1>
         <Editor refreshCompletedPoems={this.refreshCompletedPoems}/>
         <h4>What is this?</h4>
-        <p>Collective, anonymous Internet poetry, written one line at a time. No one sees the whole poem until it’s done.</p>
+        <p>Collective, anonymous Internet poetry, written one line at a time.  Anybody can contribute a line, seeing only the one that came before.  Once a poem is long enough
+        <OverlayTrigger
+          overlay={longEnoughTooltip}
+          placement='top'>
+          <sup><Glyphicon glyph='info-sign' /></sup>
+        </OverlayTrigger>
+        , you can also choose to end it, at which point the whole thing becomes public.</p>
         <p>Exquisite Corpse began as a Surrealist parlor game in the early 20th century. I created this Internet version in 2009.</p>
         <PoemContainer poems={this.state.poems}/>
       </div>
