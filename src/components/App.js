@@ -41,7 +41,7 @@ class App extends React.Component {
         <OverlayTrigger
           overlay={longEnoughTooltip}
           placement='top'>
-          <sup><Glyphicon glyph='info-sign' /></sup>
+          <sup><Glyphicon glyph='question-sign' /></sup>
         </OverlayTrigger>
         , you can also choose to end it, at which point the whole thing becomes public.</p>
         <p>Exquisite Corpse began as a Surrealist parlor game in the early 20th century. I created this Internet version in 2009.</p>
