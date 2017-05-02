@@ -17,10 +17,9 @@ function Poem(props) {
   return (
     <li key={props.id} className='poem'>
       <div className='meta'>
-        <a id={props.id} href='#top' className='poem-title'>
-          Poem #{props.id}
+        <a id={props.id} href={'#'+props.id} className='poem-title hidden-link-glyph glyphicon glyphicon-link'>
         </a>
-
+        Poem #{props.id}
         {props.starttime &&
           <span> (<Timestamp>{props.starttime}</Timestamp></span>
         }
@@ -51,7 +50,8 @@ function PoemList(props) {
   return(
     <ul className='no-bullets no-padding poem-list'>
       {props.poems.map( (poem) =>
-        <Poem key={poem.id} id={poem.id} starttime={poem.starttime} endtime={poem.endtime} lines={poem.lines} />
+        <Poem key={poem.id} id={poem.id} starttime={poem.starttime} endtime={poem.endtime} lines={poem.lines}
+        />
       )}
     </ul>
   )
