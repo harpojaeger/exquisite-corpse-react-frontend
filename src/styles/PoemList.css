@@ -6,21 +6,19 @@ li.poem div.meta {
   background-color: #eee;
   border-radius: 2px;
   margin-bottom: .5em;
-  padding: .25em .5em;
+  padding: .3em .5em;
 }
 
-li.poem div.meta a.hidden-link-glyph {
-  visibility: hidden;
-  margin: 0 1ch 0 -1.5em;
+li.poem div.meta a.hover-link {
+  display:none;
+  margin-left: .5em;
 }
 
-li.poem div.meta:hover a.hidden-link-glyph {
-  visibility: visible;
-}
-
-a.hidden-link-glyph:hover {
+li.poem div.meta:hover a.hover-link {
+  display: inline;
   text-decoration: none;
 }
+
 
 li.poem p.line {
   margin-left: 1em;
