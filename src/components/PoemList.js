@@ -4,7 +4,7 @@ var dateFormat = require('dateformat')
 const Entities = require('html-entities').AllHtmlEntities
 const entities = new Entities()
 import '../styles/PoemList.css'
-import { Tooltip, OverlayTrigger, Glyphicon } from 'react-bootstrap'
+import { Glyphicon } from 'react-bootstrap'
 
 function Timestamp(props) {
   return(
@@ -15,8 +15,6 @@ function Timestamp(props) {
 }
 
 function Poem(props) {
-  const homeTooltip = <Tooltip>Back to editor</Tooltip>
-  const linkTooltip = <Tooltip>Permalink</Tooltip>
   return (
     <li id={props.id} key={props.id} className='poem'>
       <div className='meta'>
@@ -30,14 +28,10 @@ function Poem(props) {
         }
         {props.starttime && ')'}
         <a href={'#'+props.id} className='hover-link'>
-          <OverlayTrigger placement="top" overlay={linkTooltip}>
-            <Glyphicon glyph='link' />
-          </OverlayTrigger>
+          <Glyphicon glyph='link' />
         </a>
         <a className='hover-link' href='#top'>
-          <OverlayTrigger placement='top' overlay={homeTooltip}>
-            <Glyphicon glyph='circle-arrow-up' />
-          </OverlayTrigger>
+          <Glyphicon glyph='circle-arrow-up' />
         </a>
       </div>
       {props.lines.map( (line, index) =>
