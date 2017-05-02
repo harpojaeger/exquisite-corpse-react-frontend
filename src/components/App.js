@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 
   render() {
-    const longEnoughTooltip = (<Tooltip id='long_enough_explanation'>I didn't use to require a minimum poem length, but I've found it leads to higher quality poems and less trolling.</Tooltip>)
+    const longEnoughTooltip = (<Tooltip id='long_enough_explanation'>Requiring a minimum poem length has lead to more interesting poems and less trolling.</Tooltip>)
     return (
       <div className='app'>
         <h1>Exquisite Corpse</h1>
